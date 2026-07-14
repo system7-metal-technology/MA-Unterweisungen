@@ -30,6 +30,10 @@ function applyCommonI18n(pageTitleKey) {
     if (val) el.textContent = val;
   });
 
+  document.querySelectorAll(".lang-toggle").forEach((el) => {
+    el.setAttribute("data-active", lang);
+  });
+
   document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
     const btnLang = btn.getAttribute("data-lang-btn");
     btn.classList.toggle("active", btnLang === lang);
