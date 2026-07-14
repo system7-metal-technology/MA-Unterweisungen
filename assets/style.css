@@ -66,14 +66,45 @@ header.site .wrap {
   transform: skewX(-12deg);
 }
 
+nav.site {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 nav.site a {
   color: var(--muted);
   text-decoration: none;
   font-size: 0.95rem;
-  margin-left: 20px;
 }
 
 nav.site a:hover { color: var(--ink); }
+
+.lang-toggle {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.lang-btn {
+  border: none;
+  background: #fff;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.lang-btn + .lang-btn {
+  border-left: 1px solid var(--border);
+}
+
+.lang-btn.active {
+  background: var(--red);
+  color: #fff;
+}
 
 main {
   padding: 48px 0 80px;

@@ -1,20 +1,22 @@
 (function () {
-  const shell = document.getElementById("quiz-shell");
   const questionCard = document.getElementById("question-card");
   const resultCard = document.getElementById("result-card");
   const progressFill = document.getElementById("progress-fill");
   const progressLabel = document.getElementById("progress-label");
 
+  const lang = getLang();
+  const questions = QUIZ_QUESTIONS[lang] || QUIZ_QUESTIONS.de;
+
   let current = 0;
   let score = 0;
   let answered = false;
-  const userAnswers = new Array(QUIZ_QUESTIONS.length).fill(null);
+  const userAnswers = new Array(questions.length).fill(null);
 
   function renderQuestion() {
     answered = false;
-    const q = QUIZ_QUESTIONS[current];
-    progressFill.style.width = ((current) / QUIZ_QUESTIONS.length * 100) + "%";
-    progressLabel.textContent = `Frage ${current + 1} von ${QUIZ_QUESTIONS.length}`;
+    const q = questions[current];
+    progressFill.style.width = ((current) / questions.length * 100) + "%";
+    progressLabel.textContent = t("progress_label", { cur: current + 1, total: questions.length });
 
     questionCard.innerHTML = "";
 
@@ -53,7 +55,7 @@
     const nextBtn = document.createElement("button");
     nextBtn.className = "btn btn-primary hidden";
     nextBtn.id = "next-btn";
-    nextBtn.textContent = current === QUIZ_QUESTIONS.length - 1 ? "Ergebnis anzeigen" : "Nächste Frage →";
+    nextBtn.textContent = current === questions.length - 1 ? t("next_btn_last") : t("next_btn");
     nextBtn.addEventListener("click", nextQuestion);
     actions.appendChild(nextBtn);
     questionCard.appendChild(actions);
@@ -62,7 +64,7 @@
   function selectAnswer(i, btn, opts) {
     if (answered) return;
     answered = true;
-    const q = QUIZ_QUESTIONS[current];
+    const q = questions[current];
     userAnswers[current] = i;
     if (i === q.correct) score++;
 
@@ -78,7 +80,7 @@
 
   function nextQuestion() {
     current++;
-    if (current >= QUIZ_QUESTIONS.length) {
+    if (current >= questions.length) {
       showResult();
     } else {
       renderQuestion();
@@ -87,31 +89,35 @@
 
   function showResult() {
     progressFill.style.width = "100%";
-    progressLabel.textContent = `Frage ${QUIZ_QUESTIONS.length} von ${QUIZ_QUESTIONS.length}`;
+    progressLabel.textContent = t("progress_label", { cur: questions.length, total: questions.length });
     questionCard.classList.add("hidden");
     resultCard.classList.remove("hidden");
 
-    const pct = Math.round((score / QUIZ_QUESTIONS.length) * 100);
-    document.getElementById("result-score").textContent = `${score} / ${QUIZ_QUESTIONS.length}`;
+    const pct = Math.round((score / questions.length) * 100);
+    document.getElementById("result-title").textContent = t("result_title");
+    document.getElementById("result-score").textContent = `${score} / ${questions.length}`;
 
     let msg;
-    if (pct === 100) msg = "Ausgezeichnet! Sie beherrschen alle Unterweisungsinhalte.";
-    else if (pct >= 80) msg = "Sehr gut! Ein Blick in die Dokumente schadet trotzdem nicht.";
-    else if (pct >= 50) msg = "Solide Basis — bitte die Dokumente noch einmal durchgehen.";
-    else msg = "Bitte lesen Sie die Unterweisungsdokumente sorgfältig durch und wiederholen Sie das Quiz.";
+    if (pct === 100) msg = t("result_msg_100");
+    else if (pct >= 80) msg = t("result_msg_80");
+    else if (pct >= 50) msg = t("result_msg_50");
+    else msg = t("result_msg_low");
     document.getElementById("result-msg").textContent = msg;
+
+    document.getElementById("restart-btn").textContent = t("restart_btn");
+    document.getElementById("docs-link-btn").textContent = t("docs_link_btn");
 
     const reviewList = document.getElementById("review-list");
     reviewList.innerHTML = "";
-    QUIZ_QUESTIONS.forEach((q, idx) => {
+    questions.forEach((q, idx) => {
       const ua = userAnswers[idx];
       if (ua === q.correct) return;
       const item = document.createElement("div");
       item.className = "review-item";
       item.innerHTML = `
         <div class="rq">${idx + 1}. ${q.q}</div>
-        <div>Ihre Antwort: <span class="ra-wrong">${q.options[ua]}</span></div>
-        <div>Richtig: <span class="ra-correct">${q.options[q.correct]}</span></div>
+        <div>${t("your_answer")} <span class="ra-wrong">${q.options[ua]}</span></div>
+        <div>${t("correct_answer")} <span class="ra-correct">${q.options[q.correct]}</span></div>
       `;
       reviewList.appendChild(item);
     });
@@ -126,5 +132,6 @@
     renderQuestion();
   });
 
+  applyCommonI18n("page_title_quiz");
   renderQuestion();
 })();

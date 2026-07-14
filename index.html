@@ -12,8 +12,12 @@
   <div class="wrap">
     <a class="brand" href="index.html"><span class="mark"></span>system7 <span style="font-weight:400;color:var(--muted)">metal technology</span></a>
     <nav class="site">
-      <a href="#dokumente">Dokumente</a>
-      <a href="quiz.html">Quiz</a>
+      <a href="#dokumente" data-i18n="nav_docs">Dokumente</a>
+      <a href="quiz.html" data-i18n="nav_quiz">Quiz</a>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang-btn="de">DE</button>
+        <button class="lang-btn" data-lang-btn="hu">HU</button>
+      </div>
     </nav>
   </div>
 </header>
@@ -22,43 +26,43 @@
   <div class="wrap">
 
     <section class="hero">
-      <h1>Mitarbeiter-Unterweisungen</h1>
-      <p>Hier finden Sie die aktuellen Unterweisungsdokumente zum Download sowie ein kurzes Quiz,
+      <h1 data-i18n="hero_title">Mitarbeiter-Unterweisungen</h1>
+      <p data-i18n="hero_text">Hier finden Sie die aktuellen Unterweisungsdokumente zum Download sowie ein kurzes Quiz,
       mit dem Sie Ihr Wissen zu Arbeitssicherheit, Brandschutz und Maschinenbedienung überprüfen können.</p>
     </section>
 
     <section id="dokumente">
-      <h2 class="section-title">Dokumente zum Download</h2>
-      <p class="section-sub">Bitte lesen Sie alle Dokumente sorgfältig durch, bevor Sie das Quiz starten.</p>
+      <h2 class="section-title" data-i18n="docs_title">Dokumente zum Download</h2>
+      <p class="section-sub" data-i18n="docs_sub">Bitte lesen Sie alle Dokumente sorgfältig durch, bevor Sie das Quiz starten.</p>
 
       <div class="doc-grid">
 
-        <div class="doc-card">
-          <span class="doc-num">mt-02-00103</span>
-          <h3>Werkerselbstkontrolle</h3>
-          <p>Anweisung und Protokoll zur Sichtkontrolle der Schweißnähte und Eindringprüfung (PT) für dichtgeschweißte Bauteile.</p>
-          <a class="btn btn-outline" href="documents/mt-02-00103-werkerselbstkontrolle.pdf" download>PDF herunterladen</a>
+        <div class="doc-card" data-doc="werkerselbstkontrolle">
+          <span class="doc-num" data-doc-num></span>
+          <h3 data-doc-title></h3>
+          <p data-doc-desc></p>
+          <a class="btn btn-outline" data-doc-link download></a>
         </div>
 
-        <div class="doc-card">
-          <span class="doc-num">mt-03-00101</span>
-          <h3>BA Unterweisung Allgemein</h3>
-          <p>Allgemeine Betriebsanweisung: Gebote/Verbote, Arbeits- und Pausenzeiten, PSA, Erste Hilfe, Verhalten im Brandfall.</p>
-          <a class="btn btn-outline" href="documents/mt-03-00101-unterweisung-allgemein.pdf" download>PDF herunterladen</a>
+        <div class="doc-card" data-doc="allgemein">
+          <span class="doc-num" data-doc-num></span>
+          <h3 data-doc-title></h3>
+          <p data-doc-desc></p>
+          <a class="btn btn-outline" data-doc-link download></a>
         </div>
 
-        <div class="doc-card">
-          <span class="doc-num">mt-03-00102</span>
-          <h3>Brandschutzordnung</h3>
-          <p>Verhalten im Brandfall, Brandschutzeinrichtungen, Alarmablauf, Evakuierung und Umgang mit Batterien.</p>
-          <a class="btn btn-outline" href="documents/mt-03-00102-brandschutzordnung.pdf" download>PDF herunterladen</a>
+        <div class="doc-card" data-doc="brandschutz">
+          <span class="doc-num" data-doc-num></span>
+          <h3 data-doc-title></h3>
+          <p data-doc-desc></p>
+          <a class="btn btn-outline" data-doc-link download></a>
         </div>
 
-        <div class="doc-card">
-          <span class="doc-num">mt-03-00108</span>
-          <h3>BA Drehmaschine</h3>
-          <p>Maschinenbetriebsanweisung für konventionelle Drehmaschinen: Gefahren, Schutzmaßnahmen und PSA.</p>
-          <a class="btn btn-outline" href="documents/mt-03-00108-drehmaschine.pdf" download>PDF herunterladen</a>
+        <div class="doc-card" data-doc="drehmaschine">
+          <span class="doc-num" data-doc-num></span>
+          <h3 data-doc-title></h3>
+          <p data-doc-desc></p>
+          <a class="btn btn-outline" data-doc-link download></a>
         </div>
 
       </div>
@@ -67,10 +71,10 @@
     <section>
       <div class="quiz-cta">
         <div>
-          <h3>Wissens-Quiz</h3>
-          <p>15 Fragen zu den obigen Unterweisungen &mdash; direkt im Browser, ohne Anmeldung.</p>
+          <h3 data-i18n="quiz_cta_title">Wissens-Quiz</h3>
+          <p data-i18n="quiz_cta_text">15 Fragen zu den obigen Unterweisungen &mdash; direkt im Browser, ohne Anmeldung.</p>
         </div>
-        <a class="btn btn-primary" href="quiz.html">Quiz starten &rarr;</a>
+        <a class="btn btn-primary" href="quiz.html" data-i18n="quiz_cta_btn">Quiz starten &rarr;</a>
       </div>
     </section>
 
@@ -78,10 +82,16 @@
 </main>
 
 <footer class="site">
-  <div class="wrap">
+  <div class="wrap" data-i18n="footer">
     system7 metal technology &mdash; Mitarbeiter-Unterweisungen
   </div>
 </footer>
 
+<script src="assets/i18n.js"></script>
+<script src="assets/lang.js"></script>
+<script>
+  applyCommonI18n("page_title_index");
+  renderDocs();
+</script>
 </body>
 </html>

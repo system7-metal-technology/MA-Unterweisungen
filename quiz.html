@@ -12,7 +12,11 @@
   <div class="wrap">
     <a class="brand" href="index.html"><span class="mark"></span>system7 <span style="font-weight:400;color:var(--muted)">metal technology</span></a>
     <nav class="site">
-      <a href="index.html">Zurück zur Übersicht</a>
+      <a href="index.html" data-i18n="back_link">Zurück zur Übersicht</a>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang-btn="de">DE</button>
+        <button class="lang-btn" data-lang-btn="hu">HU</button>
+      </div>
     </nav>
   </div>
 </header>
@@ -29,12 +33,12 @@
       <div class="question-card" id="question-card"></div>
 
       <div class="result-card hidden" id="result-card">
-        <div class="section-sub" style="margin:0;">Ihr Ergebnis</div>
+        <div class="section-sub" style="margin:0;" id="result-title">Ihr Ergebnis</div>
         <div class="result-score" id="result-score">0 / 15</div>
         <div class="result-msg" id="result-msg"></div>
         <div class="result-actions">
           <button class="btn btn-primary" id="restart-btn">Quiz wiederholen</button>
-          <a class="btn btn-outline" href="index.html">Zur Dokumentenübersicht</a>
+          <a class="btn btn-outline" href="index.html" id="docs-link-btn">Zur Dokumentenübersicht</a>
         </div>
         <div class="review-list" id="review-list"></div>
       </div>
@@ -44,11 +48,13 @@
 </main>
 
 <footer class="site">
-  <div class="wrap">
+  <div class="wrap" data-i18n="footer">
     system7 metal technology &mdash; Mitarbeiter-Unterweisungen
   </div>
 </footer>
 
+<script src="assets/i18n.js"></script>
+<script src="assets/lang.js"></script>
 <script src="assets/quiz-data.js"></script>
 <script src="assets/quiz.js"></script>
 </body>

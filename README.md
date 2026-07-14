@@ -6,12 +6,13 @@ Minimalistische Website zur Mitarbeiter-Unterweisung bei system7 metal technolog
 
 ## Inhalt
 
-- **Dokumente zum Download** – die 4 aktuellen Unterweisungsdokumente als PDF:
+- **Dokumente zum Download** – die 4 aktuellen Unterweisungsdokumente als PDF, auf Deutsch und Ungarisch:
   - Werkerselbstkontrolle (Sichtkontrolle/Eindringprüfung Schweißnähte)
   - BA Unterweisung Allgemein
   - Brandschutzordnung
   - BA Drehmaschine
 - **Quiz** – 15 Fragen zu den Inhalten der Dokumente, mit direktem Feedback und Erklärung nach jeder Antwort sowie einer Ergebnisübersicht am Ende.
+- **Sprachumschaltung (DE/HU)** – über den Umschalter oben rechts lässt sich die gesamte Seite inklusive Quiz und Dokumenten-Downloads zwischen Deutsch (Standard) und Ungarisch umschalten. Die Auswahl wird im Browser gespeichert.
 
 ## Struktur
 
@@ -19,9 +20,12 @@ Minimalistische Website zur Mitarbeiter-Unterweisung bei system7 metal technolog
 index.html              Startseite mit Dokumenten-Downloads und Quiz-Einstieg
 quiz.html               Interaktives Quiz
 assets/style.css        Styling
-assets/quiz-data.js     Die 15 Quizfragen
+assets/i18n.js          Übersetzungstexte (DE/HU) und Dokumenten-Metadaten
+assets/lang.js          Sprachumschaltung (Toggle, Speicherung, Rendering)
+assets/quiz-data.js     Die 15 Quizfragen (DE/HU)
 assets/quiz.js          Quiz-Logik
-documents/              Die 4 PDF-Dokumente
+documents/              Die 4 deutschen PDF-Dokumente
+documents/hu/           Die 4 ungarischen PDF-Dokumente
 ```
 
 ## Lokal testen
