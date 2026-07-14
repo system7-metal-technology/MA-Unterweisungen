@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz | system7 metal technology</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="mark"></span>system7 <span style="font-weight:400;color:var(--muted)">metal technology</span></a>
+    <nav class="site">
+      <a href="index.html">Zurück zur Übersicht</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="quiz-shell" id="quiz-shell">
+
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="progress-label" id="progress-label">Frage 1 von 15</div>
+
+      <div class="question-card" id="question-card"></div>
+
+      <div class="result-card hidden" id="result-card">
+        <div class="section-sub" style="margin:0;">Ihr Ergebnis</div>
+        <div class="result-score" id="result-score">0 / 15</div>
+        <div class="result-msg" id="result-msg"></div>
+        <div class="result-actions">
+          <button class="btn btn-primary" id="restart-btn">Quiz wiederholen</button>
+          <a class="btn btn-outline" href="index.html">Zur Dokumentenübersicht</a>
+        </div>
+        <div class="review-list" id="review-list"></div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    system7 metal technology &mdash; Mitarbeiter-Unterweisungen
+  </div>
+</footer>
+
+<script src="assets/quiz-data.js"></script>
+<script src="assets/quiz.js"></script>
+</body>
+</html>
